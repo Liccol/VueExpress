@@ -10,7 +10,11 @@ server.use(bodyParser.urlencoded({ extended: true }));
 /*引入测试服务*/
 const test = require('./server/test');
 const upload = require('./server/service/upload');
-// 将服务路由挂载至服务器
+/* 将服务路由挂载至服务器
+   使用.use()上在/路径下挂载router
+   router的相应路由见test和upload
+   把操作单独拎出来放在一个js中
+*/
 server.use('/',test);
 server.use('/',upload);
 
@@ -19,16 +23,6 @@ server.use('/',upload);
 server.listen(3000,()=>{
   console.log('Server is running at http://localhost:3000');
 });
-
-
-
-
-
-
-
-
-
-
 
 // server.use(function (req, res) {
 //   res.send({

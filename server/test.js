@@ -1,13 +1,14 @@
 const express = require("express");
-//定义路由级中间件
+// 定义路由级中间件
 const router = express.Router();
-//引入数据库连接池
+// 引入数据库连接池
 const query=require("./db/db");
 
 /*
  * 增删改查服务路由
  * */
 /*新增*/
+// TODO:修改数据库列信息
 router.use('/test/add', function (req, res) {
   let sql  ="INSERT INTO user_info (name,country,date,score) VALUES(?,?,?,?);";
   let sqlParams = [
@@ -34,6 +35,7 @@ router.use('/test/add', function (req, res) {
 
 });
 /*删除*/
+// TODO:修改数据库列信息
 router.use('/test/delete', function (req, res) {
   let delSql = 'DELETE FROM user_info where id='+req.body.id;
   query(delSql,null, function(err, rows, fields) {
@@ -53,6 +55,7 @@ router.use('/test/delete', function (req, res) {
   })
 });
 /*编辑*/
+// TODO:修改数据库列信息
 router.use('/test/edit', function (req, res) {
   let editSql = 'UPDATE user_info SET name=?,country=?,date=?,score=? WHERE id ='+req.body.id;
   let editSqlParams = [
@@ -77,6 +80,7 @@ router.use('/test/edit', function (req, res) {
   })
 });
 /*查询*/
+// TODO:修改数据库列信息
 router.use('/test/query', function (req, res) {
   let pageNumber = req.body.pageNumber;
   let pageSize = req.body.pageSize;
@@ -107,9 +111,6 @@ router.use('/test/query', function (req, res) {
       res.end();
     });
   })
-
-
-
 });
 
 
